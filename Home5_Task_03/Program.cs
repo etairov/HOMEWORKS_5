@@ -11,8 +11,7 @@ double[] GetArray(int newstring)
 
     for (int i = 0; i < newstring; i++)
     {
-        //arr[i] = rnd.Next(-10, 10);
-        arr[i] = rnd.NextDouble();
+        arr[i] = Math.Round(rnd.NextDouble() * 10, 2);
     }
     return arr;
 }
@@ -20,27 +19,26 @@ double[] GetArray(int newstring)
 void MinMaxDiff(double[] array)
 {
     double max = 0;
-    double min = 0;
+    double min = array[0];
     double diff = 0;
 
     for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i] > max) max = array[i];
-        if (array[i] < max) min = array[i];
+        {
+            if (array[i] > max) max = array[i];
+            if (array[i] < array[0]) min = array[i];
+        }
+    diff = Math.Round((max - min), 2);
 
-        diff = (max - min);  
-    }
-    
-    Console.WriteLine($"МАХ значение массива: {max}");
-    Console.WriteLine($"МIN значение массива: {min}");
-    Console.WriteLine($"Разность MAX и MIN значений: {diff}");
+
+Console.WriteLine($"МАХ значение массива: {max}");
+Console.WriteLine($"МIN значение массива: {min}");
+Console.WriteLine($"Разность MAX и MIN значений: {diff}");
 }
 
-double[] array = GetArray(4);
+double[] array = GetArray(10);
 
 Console.Write("Массив чисел на входе: [");
 Console.Write(string.Join(", ", array));
-//Console.Write(Math.Round(string.Join(", ", array)), 2);
 Console.Write("]");
 
 Console.WriteLine();
