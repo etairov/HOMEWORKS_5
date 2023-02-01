@@ -2,6 +2,7 @@
 
 //[3 7 22 2 78] -> 76
 //---------------------------
+//double num1 = num * (maximum - minimum) + minimum
 
 double[] GetArray(int newstring)
 {
@@ -10,7 +11,8 @@ double[] GetArray(int newstring)
 
     for (int i = 0; i < newstring; i++)
     {
-        arr[i] = rnd.Next(-10, 10);
+        //arr[i] = rnd.Next(-10, 10);
+        arr[i] = rnd.NextDouble();
     }
     return arr;
 }
@@ -24,7 +26,7 @@ void MinMaxDiff(double[] array)
     for (int i = 0; i < array.Length; i++)
     {
         if (array[i] > max) max = array[i];
-        if (array[i] < min) min = array[i];
+        if (array[i] < max) min = array[i];
 
         diff = (max - min);  
     }
@@ -38,6 +40,7 @@ double[] array = GetArray(4);
 
 Console.Write("Массив чисел на входе: [");
 Console.Write(string.Join(", ", array));
+//Console.Write(Math.Round(string.Join(", ", array)), 2);
 Console.Write("]");
 
 Console.WriteLine();
